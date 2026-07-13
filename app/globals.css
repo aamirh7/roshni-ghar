@@ -24,3 +24,27 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+:root {
+  --brand-black: #080706;
+  --brand-gold: #c89b3c;
+  --brand-gold-soft: #e7c56a;
+  --brand-bronze: #8c6328;
+  --brand-ivory: #fff8ef;
+  --brand-cream: #f8efe1;
+  --brand-text: #171717;
+  --brand-muted: #6b6258;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--brand-ivory);
+  color: var(--brand-text);
+}
+
+::selection {
+  background: var(--brand-gold);
+  color: var(--brand-black);
+}
