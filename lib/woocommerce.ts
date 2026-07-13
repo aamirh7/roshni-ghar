@@ -14,8 +14,8 @@ async function wooFetch<T>(
 ): Promise<T> {
   const url = new URL(`${siteUrl}/wp-json/wc/v3/${endpoint}`);
 
-  url.searchParams.set("consumer_key", consumerKey);
-  url.searchParams.set("consumer_secret", consumerSecret);
+  url.searchParams.set("consumer_key", consumerKey!);
+  url.searchParams.set("consumer_secret", consumerSecret!);
 
   Object.entries(params).forEach(([key, value]) => {
     url.searchParams.set(key, String(value));
