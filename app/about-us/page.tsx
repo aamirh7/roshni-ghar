@@ -186,10 +186,10 @@ export default function AboutUsPage() {
                 <img
                   src={item.img}
                   alt={item.title}
-                  className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                  className="absolute inset-0 h-full w-full object-cover contrast-[1.03] saturate-[1.08] transition duration-700 group-hover:scale-105"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-r from-[#fffaf2]/95 via-[#fffaf2]/80 to-[#fffaf2]/20" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#fff8ef]/88 via-[#fff8ef]/58 to-[#fff8ef]/5" />
 
                 <div className="relative z-10 flex h-full max-w-[76%] flex-col p-7">
                   <span className="mb-6 flex h-11 w-11 items-center justify-center rounded-full bg-[#c89b3c] text-sm font-bold text-white shadow-lg">
@@ -261,7 +261,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-white px-6 py-20">
+      <section className="bg-white px-6 pb-20 pt-5 md:pt-7">
         <div className="relative mx-auto min-h-[380px] max-w-7xl overflow-hidden rounded-3xl bg-neutral-950 shadow-[0_25px_70px_rgba(20,15,8,0.22)]">
           <img
             src="/about-cta.webp"
