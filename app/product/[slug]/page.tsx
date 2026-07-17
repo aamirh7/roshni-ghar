@@ -1,3 +1,4 @@
+import ProductGallery from "@/components/ProductGallery";
 import { getProducts } from "@/lib/woocommerce";
 
 type ProductPageProps = {
@@ -20,6 +21,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     return (
       <main className="mx-auto max-w-7xl px-6 py-20">
         <h1 className="text-3xl font-bold">Product not found</h1>
+
         <a href="/shop" className="mt-6 inline-block underline">
           Back to shop
         </a>
@@ -27,40 +29,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
     );
   }
 
-  const mainImage = product.images?.[0];
   const checkoutUrl = `${process.env.WOOCOMMERCE_URL}/checkout/?add-to-cart=${product.id}`;
 
   return (
     <main>
       <section className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-2">
-        <div>
-          <div className="overflow-hidden rounded-3xl border border-neutral-200 bg-neutral-100">
-            {mainImage?.src ? (
-              <img
-                src={mainImage.src}
-                alt={mainImage.alt || product.name}
-                className="h-[520px] w-full object-cover"
-              />
-            ) : (
-              <div className="flex h-[520px] items-center justify-center text-neutral-400">
-                No image
-              </div>
-            )}
-          </div>
-
-          {product.images.length > 1 && (
-            <div className="mt-4 grid grid-cols-4 gap-3">
-              {product.images.slice(1, 5).map((image) => (
-                <img
-                  key={image.id}
-                  src={image.src}
-                  alt={image.alt || product.name}
-                  className="h-28 w-full rounded-xl border border-neutral-200 object-cover"
-                />
-              ))}
-            </div>
-          )}
-        </div>
+        <ProductGallery
+          images={product.images || []}
+          productName={product.name}
+        />
 
         <div>
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-amber-600">
@@ -77,6 +54,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 <span className="text-neutral-400 line-through">
                   Rs {product.regular_price}
                 </span>
+
                 <span className="font-bold text-neutral-950">
                   Rs {product.sale_price}
                 </span>
@@ -90,13 +68,16 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
           <div
             className="mb-6 text-lg leading-8 text-neutral-700"
-            dangerouslySetInnerHTML={{ __html: product.short_description }}
+            dangerouslySetInnerHTML={{
+              __html: product.short_description,
+            }}
           />
 
           <div className="mb-6 rounded-2xl border border-neutral-200 p-5">
             <p className="mb-2">
-              <strong>SKU:</strong> {product.sku}
+              <strong>SKU:</strong> {product.sku || "N/A"}
             </p>
+
             <p className="capitalize">
               <strong>Availability:</strong>{" "}
               {product.stock_status === "instock"
@@ -108,14 +89,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <div className="flex flex-wrap gap-4">
             <a
               href={checkoutUrl}
-              className="rounded-full bg-black px-8 py-4 text-sm font-semibold text-white hover:bg-neutral-800"
+              className="rounded-full bg-black px-8 py-4 text-sm font-semibold text-white transition hover:bg-[#c89b3c] hover:text-black"
             >
               Buy Now
             </a>
 
             <a
               href="/shop"
-              className="rounded-full border border-neutral-300 px-8 py-4 text-sm font-semibold hover:bg-neutral-100"
+              className="rounded-full border border-neutral-300 px-8 py-4 text-sm font-semibold transition hover:border-[#c89b3c] hover:bg-[#fff8ef]"
             >
               Back to Shop
             </a>
@@ -129,7 +110,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
           <div
             className="prose max-w-none text-neutral-700"
-            dangerouslySetInnerHTML={{ __html: product.short_description }}
+            dangerouslySetInnerHTML={{
+              __html: product.short_description,
+            }}
           />
         </div>
       </section>
