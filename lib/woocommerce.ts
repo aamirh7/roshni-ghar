@@ -36,6 +36,18 @@ async function wooFetch<T>(
   return response.json();
 }
 
+function fixImageUrl(imageUrl: string) {
+  return imageUrl
+    .replace(
+      "https://www.roshnighar.com",
+      "https://api.roshnighar.com"
+    )
+    .replace(
+      "https://roshnighar.com",
+      "https://api.roshnighar.com"
+    );
+}
+
 export type WooProduct = {
   id: number;
   name: string;
@@ -70,11 +82,19 @@ export type WooCategory = {
 };
 
 export async function getProducts(params: WooFetchParams = {}) {
-  return wooFetch<WooProduct[]>("products", {
+  const products = await wooFetch<WooProduct[]>("products", {
     per_page: 12,
     status: "publish",
     ...params,
   });
+
+  return products.map((product) => ({
+    ...product,
+    images: product.images.map((image) => ({
+      ...image,
+      src: fixImageUrl(image.src),
+    })),
+  }));
 }
 
 export async function getCategories() {
