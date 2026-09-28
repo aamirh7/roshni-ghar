@@ -15,6 +15,10 @@ const collectionLinks = [
     label: "Outdoor Lights",
     href: "/collections/outdoor-lights",
   },
+  {
+    label: "Wall Lights",
+    href: "/collections/wall-lights",
+  },
 ];
 
 const navLinks = [
@@ -74,6 +78,7 @@ export default function Header() {
               <option value="wall-lamps">Wall Lamps</option>
               <option value="hanging-lights">Hanging Lights</option>
               <option value="outdoor-lights">Outdoor Lights</option>
+              <option value="outdoor-lights">Wall Lights</option>
             </select>
 
             <button
