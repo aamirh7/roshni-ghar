@@ -14,7 +14,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           <img
             src={image.src}
             alt={image.alt || product.name}
-            className="h-64 w-full object-cover transition duration-300 group-hover:scale-105"
+            className="h-80 w-full object-cover transition duration-300 group-hover:scale-105"
           />
         ) : (
           <div className="flex h-64 items-center justify-center text-neutral-400">
