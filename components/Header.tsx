@@ -243,22 +243,26 @@ export default function Header() {
                   About Us
                 </a>
 
-                {collectionLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    className="rounded-xl px-4 py-3 text-sm font-semibold text-neutral-800 transition hover:bg-[#f8efe1] hover:text-[#c89b3c]"
-                  >
-                    {link.label}
-                  </a>
-                ))}
+               <div className="rounded-xl">
+  <a
+    href="/shop"
+    className="rounded-xl px-4 py-3 text-sm font-semibold text-neutral-800 transition hover:bg-[#f8efe1] hover:text-[#c89b3c]"
+  >
+    Shop
+  </a>
 
-                <a
-                  href="/shop"
-                  className="rounded-xl px-4 py-3 text-sm font-semibold text-neutral-800 transition hover:bg-[#f8efe1] hover:text-[#c89b3c]"
-                >
-                  Shop
-                </a>
+  <div className="ml-4">
+    {collectionLinks.map((link) => (
+      <a
+        key={link.href}
+        href={link.href}
+        className="rounded-xl px-4 py-2 text-sm font-medium text-neutral-700 transition hover:bg-[#f8efe1] hover:text-[#c89b3c]"
+      >
+        {link.label}
+      </a>
+    ))}
+  </div>
+</div>
 
                 <a
                   href="/blog"
@@ -289,12 +293,15 @@ export default function Header() {
             </a>
 
             <div className="group relative">
-  <button className="flex items-center gap-1 transition hover:text-[#c89b3c]">
-    Collections
+  <a
+    href="/shop"
+    className="flex items-center gap-1 transition hover:text-[#c89b3c]"
+  >
+    Shop
     <span className="flex items-center text-xs leading-none -translate-y-[3px]">
-  ⌄
-</span>
-  </button>
+      ⌄
+    </span>
+  </a>
 
   <div
     className="
@@ -305,25 +312,20 @@ export default function Header() {
       group-hover:visible group-hover:opacity-100
     "
   >
+
+  <div>
     {collectionLinks.map((link) => (
       <a
         key={link.href}
         href={link.href}
-        className="
-          block rounded-xl px-4 py-3 text-sm font-semibold
-          text-neutral-800 transition
-          hover:bg-[#f8efe1] hover:text-[#c89b3c]
-        "
+        className="block rounded-xl px-4 py-2 text-sm font-medium text-neutral-700 transition hover:bg-[#f8efe1] hover:text-[#c89b3c]"
       >
         {link.label}
       </a>
     ))}
   </div>
 </div>
-            <a href="/shop" className="transition hover:text-[#c89b3c]">
-              Shop
-            </a>
-
+  </div>
             <a href="/blog" className="transition hover:text-[#c89b3c]">
               Blog
             </a>
