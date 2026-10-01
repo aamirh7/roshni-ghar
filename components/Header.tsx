@@ -243,26 +243,44 @@ export default function Header() {
                   About Us
                 </a>
 
-               <div className="rounded-xl">
-  <a
-    href="/shop"
-    className="rounded-xl px-4 py-3 text-sm font-semibold text-neutral-800 transition hover:bg-[#f8efe1] hover:text-[#c89b3c]"
+               <details className="rounded-xl group">
+  <summary
+    className="
+      flex cursor-pointer list-none items-center justify-between
+      rounded-xl px-4 py-3 text-sm font-semibold
+      text-neutral-800 transition
+      hover:bg-[#f8efe1] hover:text-[#c89b3c]
+      [&::-webkit-details-marker]:hidden
+    "
   >
-    Shop
-  </a>
+    <span>Shop</span>
 
-  <div className="ml-4">
+    <span className="text-xs transition group-open:rotate-180">
+      ⌄
+    </span>
+  </summary>
+
+
+  <div className="ml-4 mt-2 flex flex-col border-l border-[#eadfce] pl-3">
+
     {collectionLinks.map((link) => (
       <a
         key={link.href}
         href={link.href}
-        className="rounded-xl px-4 py-2 text-sm font-medium text-neutral-700 transition hover:bg-[#f8efe1] hover:text-[#c89b3c]"
+        className="
+          rounded-xl px-4 py-2 text-sm font-medium
+          text-neutral-700 transition
+          hover:bg-[#f8efe1]
+          hover:text-[#c89b3c]
+        "
       >
         {link.label}
       </a>
     ))}
+
   </div>
-</div>
+
+</details>
 
                 <a
                   href="/blog"
